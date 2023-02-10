@@ -14,9 +14,11 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
-        string dbPath = FileAccessHelper.GetLocalFilePath("mesas.db3");
+        string dbPath = FileAccessHelper.GetLocalFilePath("basededatos.db3");
         builder.Services.AddSingleton<MesaRepository>(s => ActivatorUtilities.
 			CreateInstance<MesaRepository>(s, dbPath));
+        builder.Services.AddSingleton<ProductoRepository>(s => ActivatorUtilities.
+            CreateInstance<ProductoRepository>(s, dbPath));
 
 #if DEBUG
         builder.Logging.AddDebug();

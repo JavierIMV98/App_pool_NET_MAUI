@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppPoolMaui.OrdensPage">
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0">
+            <Image Source="ordenes1.png"
+                   SemanticProperties.Description="imagen Ordenes"
+                   HeightRequest="200"
+                   HorizontalOptions="Center"
+                   Margin="20"/>
+            <Label 
+                Margin="10"
+                x:Name="labelOrdenes"
+                FontSize="30"
+                Text="Crea Ordenes!"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <Editor x:Name="editNombreOrden"
+                    Placeholder="Nombre del Orden"
+                    HorizontalOptions="Center"
+                    FontSize="28"/>
+            <Editor x:Name="editPrecioOrden"
+                    Placeholder="Precio del Orden"
+                    HorizontalOptions="Center"
+                    FontSize="28"/>
+            <Button Text="Agregar Orden"
+                    Clicked="OnAgrOrden"
+                    HorizontalOptions="Center"/>
+            <Button Text="Ver Ordenes"
+                    x:Name="verOrdenBtn"
+                    Clicked="OnVerOrden"
+                    HorizontalOptions="Center"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+
+                <Label HorizontalOptions="Center" FontSize="20" Text="Nombre"/>
+                <Label HorizontalOptions="Center" FontSize="20" Grid.Column="1"  Text="Precio ($)"/>
+
+            </Grid>
+
+            <CollectionView x:Name="ordenesList" Grid.Row="4">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label FontSize="20" HorizontalOptions="Center" Text="{Binding Nombre}" />
+                            <Label FontSize="20" HorizontalOptions="Center" Grid.Column="1" Text="{Binding Precio}" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

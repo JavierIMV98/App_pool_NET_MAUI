@@ -47,8 +47,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\ordenes1.png" />
 	  <None Remove="Resources\Images\poolball1.png" />
 	  <None Remove="Resources\Images\pool_color.png" />
+	  <None Remove="Resources\Images\productos.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -56,6 +58,15 @@
 		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
 		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.4" />
 		<PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\OrdensPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ProductsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

@@ -46,6 +46,18 @@
                 Clicked="OnVerClicked"
                 HorizontalOptions="Center"/>
 
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+
+                <Label HorizontalOptions="Center" x:Name="nombreColumna0" IsVisible="true" Text="Numero mesa"/>
+                <Label HorizontalOptions="Center" x:Name="nombreColumna1" IsVisible="true" Grid.Column="1"  Text="Hora"/>
+
+            </Grid>
+
+
             <CollectionView x:Name="mesasList" Grid.Row="4">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -55,8 +67,8 @@
                                 <ColumnDefinition Width="2*" />
                             </Grid.ColumnDefinitions>
 
-                            <Label Text="{Binding Numero}" />
-                            <Label Grid.Column="1" Text="{Binding HoraInicio}" />
+                            <Label HorizontalOptions="Center" FontSize="20" Text="{Binding Numero}" />
+                            <Label HorizontalOptions="Center" FontSize="20" Grid.Column="1" Text="{Binding HoraInicio}" />
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

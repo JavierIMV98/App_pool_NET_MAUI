@@ -3,12 +3,22 @@
     x:Class="AppPoolMaui.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:AppPoolMaui"
-    Shell.FlyoutBehavior="Disabled">
-
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-
+    xmlns:local="clr-namespace:AppPoolMaui">
+<!--TODO: Cambiar el local a pages, que no se porque ahora no funciona -->
+    <FlyoutItem Title="Gestion Mesas">
+        <ShellContent
+            Title="Gestion Mesas"
+            ContentTemplate="{DataTemplate local:MainPage}"/>
+    </FlyoutItem>
+    <FlyoutItem Title="Gestion Productos">
+        <ShellContent
+            Title="Gestion Productos"
+            ContentTemplate="{DataTemplate local:ProductsPage}"/>
+    </FlyoutItem>
+    <FlyoutItem Title="Gestion Ordenes">
+        <ShellContent
+            Title="Gestion Ordenes"
+            ContentTemplate="{DataTemplate local:OrdensPage}"/>
+    </FlyoutItem>
+    
 </Shell>

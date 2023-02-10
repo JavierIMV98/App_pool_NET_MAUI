@@ -16,7 +16,5 @@ namespace AppPoolMaui.Models
         public string Nombre { get; set; }
         [MaxLength(50)]
         public double Precio { get; set; }
-        [MaxLength(50)]
-        public int Cantidad { get; set; }
     }
 }

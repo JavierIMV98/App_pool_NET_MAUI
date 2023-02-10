@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppPoolMaui.ProductsPage">
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0">
+            <Image Source="productos.png"
+                   SemanticProperties.Description="imagen productos"
+                   HeightRequest="200"
+                   HorizontalOptions="Center"
+                   Margin="20"/>
+            <Label 
+                Margin="10"
+                x:Name="labelProductos"
+                FontSize="30"
+                Text="Crea Productos!"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <Editor x:Name="editNombreProducto"
+                    Placeholder="Nombre del Producto"
+                    HorizontalOptions="Center"
+                    FontSize="28"/>
+            <Editor x:Name="editPrecioProducto"
+                    Placeholder="Precio del Producto"
+                    HorizontalOptions="Center"
+                    FontSize="28"/>
+            <Button Text="Agregar Producto"
+                    x:Name="agrProductoBtn"
+                    Clicked="OnAgrProducto"
+                    HorizontalOptions="Center"/>
+            <Button Text="Ver Productos"
+                    x:Name="verProductoBtn"
+                    Clicked="OnVerProducto"
+                    HorizontalOptions="Center"/>
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+
+                <Label HorizontalOptions="Center" FontSize="20" Text="Nombre"/>
+                <Label HorizontalOptions="Center" FontSize="20" Grid.Column="1"  Text="Precio ($)"/>
+            
+            </Grid>
+
+            <CollectionView x:Name="productosList" Grid.Row="4">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label FontSize="20" HorizontalOptions="Center" Text="{Binding Nombre}" />
+                            <Label FontSize="20" HorizontalOptions="Center" Grid.Column="1" Text="{Binding Precio}" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
