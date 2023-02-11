@@ -10,7 +10,14 @@
                    SemanticProperties.Description="imagen productos"
                    HeightRequest="200"
                    HorizontalOptions="Center"
-                   Margin="20"/>
+                   Margin="20">
+                <Image.Shadow>
+                    <Shadow Brush="#000000" 
+                Offset="10,10"
+                Radius="40"
+                Opacity="0.2"/>
+                </Image.Shadow>
+            </Image>
             <Label 
                 Margin="10"
                 x:Name="labelProductos"

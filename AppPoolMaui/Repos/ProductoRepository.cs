@@ -15,6 +15,17 @@ namespace AppPoolMaui
 
         private SQLiteAsyncConnection _connection;
 
+        private SQLiteConnection conn;
+
+        private void InitMainThread()
+        {
+            if (conn != null)
+                return;
+
+            conn = new SQLiteConnection(_dbPath);
+            conn.CreateTable<Producto>();
+        }
+
         private async Task Init()
         {
             if (_connection != null) return;
@@ -56,6 +67,21 @@ namespace AppPoolMaui
             {
                 await Init();
                 return await _connection.Table<Producto>().ToListAsync();
+            }
+            catch (Exception ex)
+            {
+
+                StatusMessage = string.Format("Fallo, ", ex.Message);
+            }
+            return new List<Producto>();
+        }
+
+        public List<Producto> SeleccionarProductos()
+        {
+            try
+            {
+                InitMainThread();
+                return conn.Table<Producto>().ToList();
             }
             catch (Exception ex)
             {

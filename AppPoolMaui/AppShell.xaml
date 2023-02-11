@@ -15,7 +15,7 @@
             Title="Gestion Productos"
             ContentTemplate="{DataTemplate local:ProductsPage}"/>
     </FlyoutItem>
-    <FlyoutItem Title="Gestion Ordenes">
+    <FlyoutItem  Title="Gestion Ordenes">
         <ShellContent
             Title="Gestion Ordenes"
             ContentTemplate="{DataTemplate local:OrdensPage}"/>

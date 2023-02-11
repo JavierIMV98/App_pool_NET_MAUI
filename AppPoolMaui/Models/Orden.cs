@@ -12,15 +12,15 @@ namespace AppPoolMaui.Models
     {
 
         [PrimaryKey, AutoIncrement]
-        int Id { get; set; }
+        public int Id { get; set; }
 
         [Indexed]
-        int NroMesa { get; set; }
+        public string NroMesa { get; set; }
 
         [Indexed]
-        int IdProducto { get; set; }
+        public string NombreProducto { get; set; }
 
         [MaxLength(50)]
-        int Cantidad { get; set; }
+        public int Cantidad { get; set; }
     }
 }

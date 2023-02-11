@@ -9,13 +9,19 @@
             Padding="30,0"
             >
 
-            <Image
-                Source="pool_color.png"
+            <Image Source="pool_color.png"
                 SemanticProperties.Description="Mesa de pool"
                 HeightRequest="200"
                 HorizontalOptions="Center"
-                Margin="10"
-                />
+                Margin="10">
+                <Image.Shadow>
+                    <Shadow Brush="#000000" 
+                Offset="10,10"
+                Radius="40"
+                Opacity="0.2"/>
+                </Image.Shadow>
+            </Image>
+                
 
             <Label
                 x:Name="label1"

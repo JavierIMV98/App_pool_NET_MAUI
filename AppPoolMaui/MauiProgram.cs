@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using AppPoolMaui.Repos;
+using Microsoft.Extensions.Logging;
 
 namespace AppPoolMaui;
 
@@ -19,6 +20,8 @@ public static class MauiProgram
 			CreateInstance<MesaRepository>(s, dbPath));
         builder.Services.AddSingleton<ProductoRepository>(s => ActivatorUtilities.
             CreateInstance<ProductoRepository>(s, dbPath));
+		builder.Services.AddSingleton<OrdenRepository>(s => ActivatorUtilities.
+			CreateInstance<OrdenRepository>(s, dbPath));
 
 #if DEBUG
         builder.Logging.AddDebug();

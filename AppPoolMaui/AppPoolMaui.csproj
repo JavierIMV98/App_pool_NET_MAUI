@@ -32,9 +32,9 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\poolball.png" />
+		<MauiIcon Include="Resources\AppIcon\poolball2.png" Color="#1b4a3b"/>
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\poolsplash.png" BaseSize="128,128" Color="#111819" />
+		<MauiSplashScreen Include="Resources\Splash\triangulo.png" Color="#1b4a3b"/>
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
@@ -51,6 +51,7 @@
 	  <None Remove="Resources\Images\poolball1.png" />
 	  <None Remove="Resources\Images\pool_color.png" />
 	  <None Remove="Resources\Images\productos.png" />
+	  <None Remove="Resources\Images\triangulo.png" />
 	</ItemGroup>
 
 	<ItemGroup>

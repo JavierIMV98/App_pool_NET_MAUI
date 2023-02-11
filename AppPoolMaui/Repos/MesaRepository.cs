@@ -15,6 +15,16 @@ namespace AppPoolMaui
 
         private SQLiteAsyncConnection _connection;
 
+        private SQLiteConnection conn;
+
+        private void InitMainThread()
+        {
+            if (conn != null)
+                return;
+
+            conn = new SQLiteConnection(_dbPath);
+            conn.CreateTable<Mesa>();
+        }
         private async Task Init()
         {
             if (_connection != null) return;
@@ -53,6 +63,22 @@ namespace AppPoolMaui
             {
                 await Init();
                 return await _connection.Table<Mesa>().ToListAsync();
+            }
+            catch (Exception ex)
+            {
+
+                StatusMessage = string.Format("Fallo, ", ex.Message);
+            }
+            return new List<Mesa>();
+        }
+
+        //Metodo en el main thread para ver como agregar la lista de mesas en el picker de ordenes
+        public List<Mesa> SeleccionarMesas()
+        {
+            try
+            {
+                InitMainThread();
+                return conn.Table<Mesa>().ToList();
             }
             catch (Exception ex)
             {
