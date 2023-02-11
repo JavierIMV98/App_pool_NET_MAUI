@@ -93,7 +93,7 @@
 
                             <Label FontSize="20" HorizontalOptions="Center" Text="{Binding Id}" />
                             <Label FontSize="20" HorizontalOptions="Center" Grid.Column="1" Text="{Binding NroMesa}" />
-                            <Label FontSize="20" HorizontalOptions="Center" Grid.Column="2" Text="{Binding NombreProducto}" />
+                            <Label FontSize="20" HorizontalOptions="Center" Grid.Column="2" Text="{Binding PrecioProducto}" />
                             <Label FontSize="20" HorizontalOptions="Center" Grid.Column="3" Text="{Binding Cantidad}" />
                         </Grid>
                     </DataTemplate>

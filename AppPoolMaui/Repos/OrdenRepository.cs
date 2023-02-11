@@ -25,7 +25,7 @@ namespace AppPoolMaui.Repos
         {
             _dbPath = dbPath;
         }
-        public async Task AddNewOrden(string numeromesa, string nombreproducto, int cantidad)
+        public async Task AddNewOrden(string numeromesa, string precioproducto, int cantidad)
         {
             int result = 0;
             try
@@ -34,7 +34,7 @@ namespace AppPoolMaui.Repos
                 if (string.IsNullOrEmpty(numeromesa))
                     throw new Exception("Numero requerido");
                 result = await _connection.InsertAsync(new Orden{ NroMesa = numeromesa,
-                    NombreProducto = nombreproducto, Cantidad = cantidad});
+                    PrecioProducto = precioproducto, Cantidad = cantidad});
                 StatusMessage = $"Orden de la mesa {numeromesa} creada";
             }
             catch (Exception)

@@ -18,7 +18,7 @@ namespace AppPoolMaui.Models
         public string NroMesa { get; set; }
 
         [Indexed]
-        public string NombreProducto { get; set; }
+        public string PrecioProducto { get; set; }
 
         [MaxLength(50)]
         public int Cantidad { get; set; }
