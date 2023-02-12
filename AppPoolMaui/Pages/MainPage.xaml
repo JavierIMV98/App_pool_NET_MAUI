@@ -98,9 +98,10 @@
                                HasShadow="True">
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="2*" />
                                     
-                                    <ColumnDefinition Width="4*" />
+                                    <ColumnDefinition Width="6*" />
+                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
                                 <Image Source="{Binding Imagen}"/>
@@ -108,9 +109,14 @@
                                 <Label Text="{Binding HoraInicio}"
                                        TextColor="Black"
                                        Grid.Column="1"
-                                       FontSize="28"
+                                       FontSize="22"
                                        HorizontalTextAlignment="Center"
                                        VerticalTextAlignment="Center"/>
+                                <ImageButton 
+                                    Grid.Column="2"
+                                    Source="editar.png" 
+                                    Clicked="OnEditarBtn"
+                                             />
                             </Grid>
                         </Frame>
                     </DataTemplate>

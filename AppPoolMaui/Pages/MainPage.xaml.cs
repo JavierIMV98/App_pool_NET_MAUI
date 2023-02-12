@@ -30,6 +30,11 @@ public partial class MainPage : ContentPage
 		}
 	}
 
+	private void OnEditarBtn(object sender, EventArgs e)
+	{
+		DisplayAlert("Editar", "En construcción", "Ok");
+	}
+
 }
 
 

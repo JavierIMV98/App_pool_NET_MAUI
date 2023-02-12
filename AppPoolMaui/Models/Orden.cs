@@ -22,5 +22,6 @@ namespace AppPoolMaui.Models
 
         [MaxLength(50)]
         public int Cantidad { get; set; }
+        public string Imagen { get; set; }
     }
 }

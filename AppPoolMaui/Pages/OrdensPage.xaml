@@ -83,16 +83,14 @@
 
             <Grid HorizontalOptions="FillAndExpand">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="2*" />
                 </Grid.ColumnDefinitions>
 
-                <Label HorizontalOptions="Center" FontSize="20" Text="Id"/>
-                <Label HorizontalOptions="Center" FontSize="20" Grid.Column="1" Text="Nro Mesa"/>
-                <Label HorizontalOptions="Center" FontSize="20" Grid.Column="2" Text="Precio"/>
-                <Label HorizontalOptions="Center" FontSize="20" Grid.Column="3" Text="Cantidad"/>
+                <Label HorizontalOptions="Center" FontSize="20" Grid.Column="0" Text="Nro Mesa"/>
+                <Label HorizontalOptions="Center" FontSize="20" Grid.Column="1" Text="Precio"/>
+                <Label HorizontalOptions="Center" FontSize="20" Grid.Column="2" Text="Cantidad"/>
 
             </Grid>
 
@@ -109,15 +107,13 @@
                             <Grid HorizontalOptions="FillAndExpand">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="2*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <Label TextColor="Black" FontSize="20" HorizontalOptions="Center" Text="{Binding Id}" />
-                                <Label TextColor="Black" FontSize="20" HorizontalOptions="Center" Grid.Column="1" Text="{Binding NroMesa}" />
-                                <Label TextColor="Black" FontSize="20" HorizontalOptions="Center" Grid.Column="2" Text="{Binding PrecioProducto}" />
-                                <Label TextColor="Black" FontSize="20" HorizontalOptions="Center" Grid.Column="3" Text="{Binding Cantidad}" />
+                                <Label TextColor="Black" FontSize="20" HorizontalOptions="Center" Grid.Column="0" Text="{Binding Imagen}" />
+                                <Label TextColor="Black" FontSize="20" HorizontalOptions="Center" Grid.Column="1" Text="{Binding PrecioProducto}" />
+                                <Label TextColor="Black" FontSize="20" HorizontalOptions="Center" Grid.Column="2" Text="{Binding Cantidad}" />
                             </Grid>
                         </Frame>
                     </DataTemplate>

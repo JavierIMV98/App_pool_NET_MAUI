@@ -28,6 +28,10 @@ public partial class OrdensPage : ContentPage
     {
         List<Orden> ordenes = await App.OrdenRepo.GetAllOrdenes();
         ordenesList.ItemsSource = ordenes;
+        foreach(var orden in ordenes)
+        {
+            orden.Imagen = $"poolball{orden.NroMesa}";
+        }
     }
 
 
