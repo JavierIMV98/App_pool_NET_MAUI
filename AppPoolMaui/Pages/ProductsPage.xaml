@@ -24,28 +24,47 @@
                 FontSize="30"
                 Text="Crea Productos!"
                 VerticalOptions="Center" 
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center" 
+                HorizontalTextAlignment="Center"/>
             <Editor x:Name="editNombreProducto"
                     Placeholder="Nombre del Producto"
-                    HorizontalOptions="Center"
+                    HorizontalOptions="Fill"
+                    HorizontalTextAlignment="Center"
                     FontSize="28"/>
             <Editor x:Name="editPrecioProducto"
+                    HorizontalOptions="Fill"
+                    HorizontalTextAlignment="Center"
                     Placeholder="Precio del Producto"
-                    HorizontalOptions="Center"
                     FontSize="28"/>
-            <Button Text="Agregar Producto"
-                    x:Name="agrProductoBtn"
-                    Clicked="OnAgrProducto"
-                    HorizontalOptions="Center"/>
-            <Button Text="Ver Productos"
-                    x:Name="verProductoBtn"
-                    Clicked="OnVerProducto"
-                    HorizontalOptions="Center"/>
-            
+
             <Grid>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Text="Agregar"
+                        Scale="1.3"
+                        x:Name="agrProductoBtn"
+                        Clicked="OnAgrProducto"
+                        HorizontalOptions="Center"
+                        BackgroundColor="#1b4a3b"
+                        TextColor="White"/>
+                <Button Text="Ver"
+                        Padding="28,0"
+                        Scale="1.3"
+                        Grid.Column="1"
+                        x:Name="verProductoBtn"
+                        Clicked="OnVerProducto"
+                        HorizontalOptions="Center"
+                        BackgroundColor="#1b4a3b"
+                        TextColor="White"/>
+            </Grid>
+
+            <Grid HorizontalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
                 <Label HorizontalOptions="Center" FontSize="20" Text="Nombre"/>
@@ -56,18 +75,26 @@
             <CollectionView x:Name="productosList" Grid.Row="4">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="2*" />
-                            </Grid.ColumnDefinitions>
+                        <Frame BorderColor="DarkGray"
+                               CornerRadius="10"
+                               Padding="14"
+                               HorizontalOptions="Fill"
+                               Margin="0,0,0,20"
+                               HasShadow="True">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
 
-                            <Label FontSize="20" HorizontalOptions="Center" Text="{Binding Nombre}" />
-                            <Label FontSize="20" HorizontalOptions="Center" Grid.Column="1" Text="{Binding Precio}" />
-                        </Grid>
-                    </DataTemplate>
+                                <Label FontSize="20" HorizontalOptions="Center" Text="{Binding Nombre}" />
+                                <Label FontSize="20" HorizontalOptions="Center" Grid.Column="1" Text="{Binding Precio}" />
+                            </Grid>
+                        </Frame>
+                        </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+           
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

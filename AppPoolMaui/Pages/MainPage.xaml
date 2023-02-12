@@ -1,8 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
              x:Class="AppPoolMaui.MainPage">
-
+    <Page.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="Black"/>
+    </Page.Behaviors>
     <ScrollView>
         <VerticalStackLayout
             Spacing="25"
@@ -13,7 +16,8 @@
                 SemanticProperties.Description="Mesa de pool"
                 HeightRequest="200"
                 HorizontalOptions="Center"
-                Margin="10">
+                Margin="0,15,0,10"
+                >
                 <Image.Shadow>
                     <Shadow Brush="#000000" 
                 Offset="10,10"
@@ -29,57 +33,88 @@
                 SemanticProperties.HeadingLevel="Level1"
                 FontSize="32"
                 HorizontalOptions="Center" />
-
-            <Editor
-                x:Name="nmesa"
-                Placeholder="Número de la mesa"
-                FontSize="32"
-                HorizontalOptions="Center"/>
-
-
-
-
-            <Button
-                x:Name="CrearBtn"
-                Text="Crear Mesa"
-                SemanticProperties.Hint="Crea una mesa"
-                Clicked="OnCrearClicked"
-                HorizontalOptions="Center" />
-            <Button
-                x:Name="VerBtn"
-                Text="Ver Mesas"
-                SemanticProperties.Hint="Ve las mesas"
-                Clicked="OnVerClicked"
-                HorizontalOptions="Center"/>
-
+            <Picker x:Name="pickerNroMesa"
+                    Title="Numero de Mesa"
+                    HorizontalTextAlignment="Center"
+                    FontSize="28">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:Int32}">
+                        <x:Int32>1</x:Int32>
+                        <x:Int32>2</x:Int32>
+                        <x:Int32>3</x:Int32>
+                        <x:Int32>4</x:Int32>
+                        <x:Int32>5</x:Int32>
+                        <x:Int32>6</x:Int32>
+                        <x:Int32>7</x:Int32>
+                        <x:Int32>8</x:Int32>
+                        <x:Int32>9</x:Int32>
+                        <x:Int32>10</x:Int32>
+                        <x:Int32>11</x:Int32>
+                        <x:Int32>12</x:Int32>
+                        <x:Int32>13</x:Int32>
+                        <x:Int32>14</x:Int32>
+                        <x:Int32>15</x:Int32>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-
-                <Label HorizontalOptions="Center" x:Name="nombreColumna0" IsVisible="true" Text="Numero mesa"/>
-                <Label HorizontalOptions="Center" x:Name="nombreColumna1" IsVisible="true" Grid.Column="1"  Text="Hora"/>
+                <Button
+                    Scale="1.3"
+                    x:Name="CrearBtn"
+                    Text="Crear Mesa"
+                    SemanticProperties.Hint="Crea una mesa"
+                    Clicked="OnCrearClicked"
+                    HorizontalOptions="Center" 
+                    BackgroundColor="#1b4a3b"
+                    TextColor="White"/>
+                <Button
+                    Scale="1.3"
+                    x:Name="VerBtn"
+                    Text="Ver Mesas"
+                    Grid.Column="1"
+                    SemanticProperties.Hint="Ve las mesas"
+                    Clicked="OnVerClicked"
+                    HorizontalOptions="Center"
+                    BackgroundColor="#1b4a3b"
+                    TextColor="White"
+                    />
 
             </Grid>
 
 
-            <CollectionView x:Name="mesasList" Grid.Row="4">
+
+            <CollectionView x:Name="mesasList" Grid.Row="20">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="2*" />
-                            </Grid.ColumnDefinitions>
+                        <Frame BorderColor="DarkGray"
+                               CornerRadius="10"
+                               Padding="8"
+                               HorizontalOptions="Fill"
+                               Margin="0,0,0,20"
+                               HasShadow="True">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    
+                                    <ColumnDefinition Width="4*" />
+                                </Grid.ColumnDefinitions>
 
-                            <Label HorizontalOptions="Center" FontSize="20" Text="{Binding Numero}" />
-                            <Label HorizontalOptions="Center" FontSize="20" Grid.Column="1" Text="{Binding HoraInicio}" />
-                        </Grid>
+                                <Image Source="{Binding Imagen}"/>
+
+                                <Label Text="{Binding HoraInicio}"
+                                       Grid.Column="1"
+                                       FontSize="28"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"/>
+                            </Grid>
+                        </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
         </VerticalStackLayout>
     </ScrollView>
 

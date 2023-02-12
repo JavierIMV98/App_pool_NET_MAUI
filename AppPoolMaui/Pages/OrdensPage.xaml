@@ -28,16 +28,20 @@
             <Picker x:Name="pickerMesa"
                     Title="Mesas"
                     FontSize="28"
+                    HorizontalTextAlignment="Center"
                     ItemsSource="{Binding mesas}" 
                     ItemDisplayBinding="{Binding Numero}"/>
 
             <Picker x:Name="pickerProducto"
                     Title="Precio de los Productos"
                     FontSize="28"
+                    HorizontalTextAlignment="Center"
                     ItemsSource="{Binding productos} "
                     ItemDisplayBinding="{Binding Precio}"/>
             <Picker x:Name="pickerCantidad"
                     Title="Cantidad productos"
+                    HorizontalOptions="Fill"
+                    HorizontalTextAlignment="Center"
                     FontSize="28">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:Int32}">
@@ -55,21 +59,33 @@
                 </Picker.ItemsSource>
             </Picker>
 
-            <Button Text="Agregar Orden"
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Text="Agregar Orden"
                     Clicked="OnAgrOrden"
                     HorizontalOptions="Center"
-                    BackgroundColor="#1b4a3b"/>
+                    BackgroundColor="#1b4a3b"
+                    TextColor="White"/>
             <Button Text="Ver Ordenes"
                     x:Name="verOrdenBtn"
                     Clicked="OnVerOrden"
+                    Grid.Column="1"
                     HorizontalOptions="Center"
-                    BackgroundColor="#1b4a3b"/>
+                    BackgroundColor="#1b4a3b"
+                    TextColor="White"/>
+             </Grid>
+            
 
-            <Grid>
+
+            <Grid HorizontalOptions="FillAndExpand">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="2*" />
                 </Grid.ColumnDefinitions>
 
@@ -83,19 +99,27 @@
             <CollectionView x:Name="ordenesList" Grid.Row="4">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="2*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="2*" />
-                            </Grid.ColumnDefinitions>
+                        <Frame
+                            BorderColor="DarkGray"
+                            CornerRadius="10"
+                            Padding="15"
+                            HorizontalOptions="Fill"
+                            Margin="0,0,0,20"
+                            HasShadow="True">
+                            <Grid HorizontalOptions="FillAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
 
-                            <Label FontSize="20" HorizontalOptions="Center" Text="{Binding Id}" />
-                            <Label FontSize="20" HorizontalOptions="Center" Grid.Column="1" Text="{Binding NroMesa}" />
-                            <Label FontSize="20" HorizontalOptions="Center" Grid.Column="2" Text="{Binding PrecioProducto}" />
-                            <Label FontSize="20" HorizontalOptions="Center" Grid.Column="3" Text="{Binding Cantidad}" />
-                        </Grid>
+                                <Label FontSize="20" HorizontalOptions="Center" Text="{Binding Id}" />
+                                <Label FontSize="20" HorizontalOptions="Center" Grid.Column="1" Text="{Binding NroMesa}" />
+                                <Label FontSize="20" HorizontalOptions="Center" Grid.Column="2" Text="{Binding PrecioProducto}" />
+                                <Label FontSize="20" HorizontalOptions="Center" Grid.Column="3" Text="{Binding Cantidad}" />
+                            </Grid>
+                        </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

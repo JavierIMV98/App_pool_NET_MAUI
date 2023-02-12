@@ -32,9 +32,9 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\poolball2.png" Color="#1b4a3b"/>
+		<MauiIcon Include="Resources\AppIcon\poolball2.png" Color="#1b4a3b" />
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\triangulo.png" Color="#1b4a3b"/>
+		<MauiSplashScreen Include="Resources\Images\splash.png" Color="#1b4a3b" />
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
@@ -47,14 +47,34 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Images\ordenes1.png" />
-	  <None Remove="Resources\Images\poolball1.png" />
-	  <None Remove="Resources\Images\pool_color.png" />
-	  <None Remove="Resources\Images\productos.png" />
-	  <None Remove="Resources\Images\triangulo.png" />
+	  <MauiImage Remove="Resources\Images\triangulosplash.png" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\ordenes1.png" />
+	  <None Remove="Resources\Images\poolball1.png" />
+	  <None Remove="Resources\Images\poolball10.png" />
+	  <None Remove="Resources\Images\poolball11.png" />
+	  <None Remove="Resources\Images\poolball12.png" />
+	  <None Remove="Resources\Images\poolball13.png" />
+	  <None Remove="Resources\Images\poolball14.png" />
+	  <None Remove="Resources\Images\poolball15.png" />
+	  <None Remove="Resources\Images\poolball2.png" />
+	  <None Remove="Resources\Images\poolball3.png" />
+	  <None Remove="Resources\Images\poolball4.png" />
+	  <None Remove="Resources\Images\poolball5.png" />
+	  <None Remove="Resources\Images\poolball6.png" />
+	  <None Remove="Resources\Images\poolball7.png" />
+	  <None Remove="Resources\Images\poolball8.png" />
+	  <None Remove="Resources\Images\poolball9.png" />
+	  <None Remove="Resources\Images\pool_color.png" />
+	  <None Remove="Resources\Images\productos.png" />
+	  <None Remove="Resources\Images\splash.png" />
+	  <None Remove="Resources\Images\triangulosplash.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="4.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
 		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.4" />
@@ -62,6 +82,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="NewPage1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\OrdensPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

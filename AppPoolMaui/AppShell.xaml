@@ -3,22 +3,44 @@
     x:Class="AppPoolMaui.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:AppPoolMaui">
-<!--TODO: Cambiar el local a pages, que no se porque ahora no funciona -->
-    <FlyoutItem Title="Gestion Mesas">
-        <ShellContent
-            Title="Gestion Mesas"
-            ContentTemplate="{DataTemplate local:MainPage}"/>
-    </FlyoutItem>
-    <FlyoutItem Title="Gestion Productos">
-        <ShellContent
-            Title="Gestion Productos"
-            ContentTemplate="{DataTemplate local:ProductsPage}"/>
-    </FlyoutItem>
-    <FlyoutItem  Title="Gestion Ordenes">
-        <ShellContent
-            Title="Gestion Ordenes"
-            ContentTemplate="{DataTemplate local:OrdensPage}"/>
-    </FlyoutItem>
-    
+    xmlns:local="clr-namespace:AppPoolMaui"
+    >
+    <Shell.Resources>
+        <Style TargetType="local:AppShell">
+            <Setter Property="Shell.BackgroundColor" Value="#1b4a3b"/>
+        </Style>
+    </Shell.Resources>
+<!--TODO: Cambiar el local a pages, que no se porque ahora no funciona (para que funcione se crea en proyecto y se mueve despues a carpeta)-->
+    <Shell.FlyoutHeader>
+        <Grid>
+            <Image Source="triangulo.png"
+                   Margin="20"/>
+        </Grid>
+    </Shell.FlyoutHeader>
+    <FlyoutItem Title="Gestion Mesas"
+                
+                    FlyoutIcon="pool_color.png">
+            <ShellContent
+                Title="Gestion Mesas"
+                ContentTemplate="{DataTemplate local:MainPage}"/>
+        </FlyoutItem>
+        <FlyoutItem Title="Gestion Productos"
+                    FlyoutIcon="productos.png">
+            <ShellContent
+                Title="Gestion Productos"
+                ContentTemplate="{DataTemplate local:ProductsPage}"/>
+        </FlyoutItem>
+        <FlyoutItem  Title="Gestion Ordenes"
+                     FlyoutIcon="ordenes1.png">
+            <ShellContent
+                Title="Gestion Ordenes"
+                ContentTemplate="{DataTemplate local:OrdensPage}"/>
+        </FlyoutItem>
+    <Shell.FlyoutFooter>
+        <Label Text="Hecho por JavierIMV98" 
+               FontSize="15"
+               HorizontalTextAlignment="Start"
+               Margin="10,0,0,3"/>
+    </Shell.FlyoutFooter>
+
 </Shell>

@@ -19,6 +19,6 @@ public partial class ProductsPage : ContentPage
     {
         List <Producto> productos = await App.ProductoRepo.GetAllProductos();
         productosList.ItemsSource = productos;
-        labelProductos.Text = "Desliza hacia abajo para ver los productos!";
+        labelProductos.Text = "Desliza!";
     }
 }
