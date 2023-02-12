@@ -26,6 +26,7 @@
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
             <Picker x:Name="pickerMesa"
+                    Focused="pickerMesa_Focused"
                     Title="Mesas"
                     FontSize="28"
                     HorizontalTextAlignment="Center"
@@ -33,6 +34,7 @@
                     ItemDisplayBinding="{Binding Numero}"/>
 
             <Picker x:Name="pickerProducto"
+                    Focused="pickerProducto_Focused"
                     Title="Precio de los Productos"
                     FontSize="28"
                     HorizontalTextAlignment="Center"
@@ -70,15 +72,15 @@
                     HorizontalOptions="Center"
                     BackgroundColor="#1b4a3b"
                     TextColor="White"/>
-            <Button Text="Ver Ordenes"
+                <Button Text="Ver Ordenes"
                     x:Name="verOrdenBtn"
                     Clicked="OnVerOrden"
                     Grid.Column="1"
                     HorizontalOptions="Center"
                     BackgroundColor="#1b4a3b"
                     TextColor="White"/>
-             </Grid>
-            
+            </Grid>
+
 
 
             <Grid HorizontalOptions="FillAndExpand">
@@ -107,13 +109,13 @@
                             <Grid HorizontalOptions="FillAndExpand">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <Label TextColor="Black" FontSize="20" HorizontalOptions="Center" Grid.Column="0" Text="{Binding Imagen}" />
-                                <Label TextColor="Black" FontSize="20" HorizontalOptions="Center" Grid.Column="1" Text="{Binding PrecioProducto}" />
-                                <Label TextColor="Black" FontSize="20" HorizontalOptions="Center" Grid.Column="2" Text="{Binding Cantidad}" />
+                                <Image HeightRequest="70" Source="{Binding Imagen}"/>
+                                <Label VerticalOptions="Center" TextColor="Black" FontSize="20" HorizontalOptions="Center" Grid.Column="1" Text="{Binding PrecioProducto}" />
+                                <Label VerticalOptions="Center" TextColor="Black" FontSize="20" HorizontalOptions="Center" Grid.Column="2" Text="{Binding Cantidad}" />
                             </Grid>
                         </Frame>
                     </DataTemplate>

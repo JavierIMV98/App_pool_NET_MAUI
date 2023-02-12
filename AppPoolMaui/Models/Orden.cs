@@ -3,18 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SQLite;
-//Investigar como hacerlo 
+using SQLite; 
 namespace AppPoolMaui.Models
 {
     [Table("ordenes")]
     public class Orden
     {
-
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
-
-        [Indexed]
+        //TODO: Evaluar como poder o crear mas de una orden por mesa (quizas cambiando PK a algo que sea común para los mismos numeros...
+        [PrimaryKey]
         public string NroMesa { get; set; }
 
         [Indexed]

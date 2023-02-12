@@ -10,14 +10,8 @@ public partial class OrdensPage : ContentPage
     {
 
         InitializeComponent();
-
-        List<Mesa> mesas = App.MesaRepo.SeleccionarMesas();
-        pickerMesa.ItemsSource = mesas;
-
-        List<Producto> productos = App.ProductoRepo.SeleccionarProductos();
-        pickerProducto.ItemsSource = productos;
-
     }
+    
     private async void OnAgrOrden(object sender, EventArgs e)
     {
         await App.OrdenRepo.AddNewOrden(pickerMesa.Items[pickerMesa.SelectedIndex],
@@ -33,6 +27,25 @@ public partial class OrdensPage : ContentPage
             orden.Imagen = $"poolball{orden.NroMesa}";
         }
     }
+    private void GetDatosExternos(object sender, EventArgs e)
+    {
+        List<Mesa> mesas = App.MesaRepo.SeleccionarMesas();
+        pickerMesa.ItemsSource = mesas;
 
+        List<Producto> productos = App.ProductoRepo.SeleccionarProductos();
+        pickerProducto.ItemsSource = productos;
+    }
 
+    private void pickerMesa_Focused(object sender, FocusEventArgs e)
+    {
+
+        List<Mesa> mesas = App.MesaRepo.SeleccionarMesas();
+        pickerMesa.ItemsSource = mesas;
+    }
+
+    private void pickerProducto_Focused(object sender, FocusEventArgs e)
+    {
+        List<Producto> productos = App.ProductoRepo.SeleccionarProductos();
+        pickerProducto.ItemsSource = productos;
+    }
 }

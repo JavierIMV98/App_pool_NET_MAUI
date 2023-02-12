@@ -10,6 +10,7 @@ namespace AppPoolMaui.Repos
 {
     public class OrdenRepository
     {
+
         string _dbPath;
         public string StatusMessage { get; set; }
         private SQLiteAsyncConnection _connection;
@@ -40,6 +41,24 @@ namespace AppPoolMaui.Repos
             catch (Exception)
             {
                 StatusMessage = "Fallo en crear orden.";
+            }
+        }
+
+        public async Task DeletOrden(string numero)
+        {
+            int result = 0;
+            try
+            {
+                await Init();
+
+                if (string.IsNullOrEmpty(numero))
+                    throw new Exception("numero valido requerido");
+                result = await _connection.DeleteAsync(new Orden { NroMesa = numero, });
+            }
+            catch (Exception)
+            {
+
+                StatusMessage = "Fallo en crear mesa";
             }
         }
         public async Task <List<Orden>> GetAllOrdenes()

@@ -57,6 +57,24 @@ namespace AppPoolMaui
                 StatusMessage = "Fallo en crear mesa";
             }
         }
+
+        public async Task DeleteMesa(string numero)
+        {
+            int result = 0;
+            try
+            {
+                await Init();
+
+                if (string.IsNullOrEmpty(numero))
+                    throw new Exception("numero valido requerido");
+                result = await _connection.DeleteAsync(new Mesa { Numero = numero, });
+            }
+            catch (Exception)
+            {
+
+                StatusMessage = "Fallo en crear mesa";
+            }
+        }
         public async Task <List<Mesa>> GetAllMesas()
         {
             try

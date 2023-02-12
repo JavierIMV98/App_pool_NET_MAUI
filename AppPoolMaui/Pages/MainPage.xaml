@@ -36,7 +36,8 @@
             <Picker x:Name="pickerNroMesa"
                     Title="Numero de Mesa"
                     HorizontalTextAlignment="Center"
-                    FontSize="28">
+                    FontSize="28"
+                    Focused="pickerNroMesa_Focused">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:Int32}">
                         <x:Int32>1</x:Int32>
@@ -63,6 +64,8 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Button
+                    
+                    IsEnabled="False"
                     Scale="1.3"
                     x:Name="CrearBtn"
                     Text="Crear Mesa"
@@ -85,8 +88,6 @@
 
             </Grid>
 
-
-
             <CollectionView x:Name="mesasList" Grid.Row="20">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -98,10 +99,9 @@
                                HasShadow="True">
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*" />
-                                    
-                                    <ColumnDefinition Width="6*" />
-                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="1*" />
+
+                                    <ColumnDefinition Width="3*" />
                                 </Grid.ColumnDefinitions>
 
                                 <Image Source="{Binding Imagen}"/>
@@ -112,16 +112,23 @@
                                        FontSize="22"
                                        HorizontalTextAlignment="Center"
                                        VerticalTextAlignment="Center"/>
-                                <ImageButton 
-                                    Grid.Column="2"
-                                    Source="editar.png" 
-                                    Clicked="OnEditarBtn"
-                                             />
                             </Grid>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
+            <Button
+                    Scale="1.3"
+                    x:Name="deleteBtn"
+                    Text="Finalizar Mesa"
+                    Grid.Column="1"
+                    SemanticProperties.Hint="Elimina una mesa"
+                    Clicked="OnDeleteClicked"
+                    HorizontalOptions="Center"
+                    BackgroundColor="DarkRed"
+                    TextColor="White"
+                    />
         </VerticalStackLayout>
     </ScrollView>
 
