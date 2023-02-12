@@ -32,7 +32,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\poolball2.png" Color="#1b4a3b" />
+		<MauiIcon Include="Resources\AppIcon\poolball6.png" Color="#1b4a3b" />
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Images\splash.png" Color="#1b4a3b" />
 		<!-- Images -->
