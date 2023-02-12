@@ -87,8 +87,8 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <Label FontSize="20" HorizontalOptions="Center" Text="{Binding Nombre}" />
-                                <Label FontSize="20" HorizontalOptions="Center" Grid.Column="1" Text="{Binding Precio}" />
+                                <Label TextColor="Black" FontSize="20" HorizontalOptions="Center" Text="{Binding Nombre}" />
+                                <Label TextColor="Black" FontSize="20" HorizontalOptions="Center" Grid.Column="1" Text="{Binding Precio}" />
                             </Grid>
                         </Frame>
                         </DataTemplate>

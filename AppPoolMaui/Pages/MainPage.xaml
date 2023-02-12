@@ -106,6 +106,7 @@
                                 <Image Source="{Binding Imagen}"/>
 
                                 <Label Text="{Binding HoraInicio}"
+                                       TextColor="Black"
                                        Grid.Column="1"
                                        FontSize="28"
                                        HorizontalTextAlignment="Center"
