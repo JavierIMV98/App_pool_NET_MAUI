@@ -52,6 +52,8 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\editar.png" />
+	  <None Remove="Resources\Images\fondo.png" />
+	  <None Remove="Resources\Images\ordenes.png" />
 	  <None Remove="Resources\Images\ordenes1.png" />
 	  <None Remove="Resources\Images\poolball1.png" />
 	  <None Remove="Resources\Images\poolball10.png" />
@@ -90,6 +92,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\ProductsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="RegistrosPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

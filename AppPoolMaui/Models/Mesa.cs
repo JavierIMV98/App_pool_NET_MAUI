@@ -13,7 +13,8 @@ namespace AppPoolMaui.Models
         [PrimaryKey]
         public string Numero { get; set; }
         [MaxLength(250)]
-        public string HoraInicio { get; set; }
+        
+        public DateTime HoraInicio { get; set; }
         public string Imagen { get; set; }
     }
 }

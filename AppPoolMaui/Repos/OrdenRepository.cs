@@ -14,6 +14,14 @@ namespace AppPoolMaui.Repos
         string _dbPath;
         public string StatusMessage { get; set; }
         private SQLiteAsyncConnection _connection;
+        private SQLiteConnection conn;
+
+        private void InitMainThread()
+        {
+            if (conn != null) return;
+            conn = new SQLiteConnection(_dbPath);
+            conn.CreateTable<Orden>();
+        }
 
         private async Task Init()
         {
@@ -60,6 +68,17 @@ namespace AppPoolMaui.Repos
 
                 StatusMessage = "Fallo en crear mesa";
             }
+        }
+
+        public double valorTotalOrden(string numeroMesa)
+        {
+            InitMainThread();
+            var asd = conn.Get<Orden>(numeroMesa);
+            double cantidad = asd.Cantidad;
+            double precioProducto = double.Parse(asd.PrecioProducto);
+            return (cantidad * precioProducto);
+
+            
         }
         public async Task <List<Orden>> GetAllOrdenes()
         {

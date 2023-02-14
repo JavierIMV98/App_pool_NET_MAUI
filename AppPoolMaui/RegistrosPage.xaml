@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppPoolMaui.RegistrosPage"
+             Title="Registros">
+    <RefreshView x:Name="refreshingView" 
+                 Refreshing="RefreshView_Refreshing">
+        <ScrollView>
+            
+            <CollectionView x:Name="listaRegistros" Grid.Row="20">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        
+                        <Frame BorderColor="DarkGray"
+                               CornerRadius="10"
+                               Padding="8"
+                               HorizontalOptions="FillAndExpand"
+                               Margin="0, 10,0,1"
+                               HasShadow="True">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+
+                                    <ColumnDefinition Width="3*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding NumeroMesa}"
+                                       TextColor="Black"
+                                       Grid.Column="0"
+                                       FontSize="22"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"/>
+                                <Label Text="{Binding FechaFinalizada}"
+                                       TextColor="Black"
+                                       Grid.Column="1"
+                                       FontSize="22"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"/>
+                                <Label Text="{Binding Total}"
+                                       TextColor="Black"
+                                       Grid.Column="2"
+                                       FontSize="22"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+    </RefreshView>
+</ContentPage>

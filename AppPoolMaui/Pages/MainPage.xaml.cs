@@ -17,7 +17,7 @@ public partial class MainPage : ContentPage
 	
 	private async void OnCrearClicked(object sender, EventArgs e)
 	{
-		await App.MesaRepo.AddNewMesa(pickerNroMesa.Items[pickerNroMesa.SelectedIndex]);
+		await App.MesaRepo.AddNewMesa(pickerNroMesa.Text);
 		label1.Text = App.MesaRepo.StatusMessage;
         await ListarMesas();
 
@@ -38,9 +38,38 @@ public partial class MainPage : ContentPage
         }
         string result = await DisplayPromptAsync("Mesa", "¿Cual Mesa deseas finalizar?", placeholder: $"Usadas: {numeros}" ,keyboard: Keyboard.Numeric);
         //TODO: Metodo que calcule el precio final por mesa
-		await App.MesaRepo.DeleteMesa(result);
-		await App.OrdenRepo.DeletOrden(result);
-		await ListarMesas();
+        double totalorden = 0;
+        try
+        {
+            totalorden = App.OrdenRepo.valorTotalOrden(result);
+        }
+        catch (Exception)
+        {
+
+            totalorden = 0;
+        }
+        
+        double preciotiempo = App.MesaRepo.valorTotalTiempo(result);
+        await App.RegistroRepo.AddNewRegistro(result, totalorden + preciotiempo, DateTime.Now);
+        await App.MesaRepo.DeleteMesa(result);
+        try
+        {
+            await App.OrdenRepo.DeletOrden(result);
+        }
+        catch (Exception)
+        {
+
+            totalorden=0;
+        }
+		
+        
+
+        
+        await DisplayAlert("TOTAL GASTOS",
+            $"Los gastos de la mesa {result} fueron: \n * En productos: {totalorden}$ \n * En tiempo: {preciotiempo}$ \nTotal = {totalorden + preciotiempo}$",
+            "Ok");
+        await ListarMesas();
+        
     }
 
 	private async Task<int> ListarMesas()
@@ -62,6 +91,7 @@ public partial class MainPage : ContentPage
     {
         CrearBtn.IsEnabled= true;
     }
+
 }
 
 

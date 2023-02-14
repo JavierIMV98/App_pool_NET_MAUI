@@ -4,7 +4,7 @@
              xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
              x:Class="AppPoolMaui.MainPage">
     <Page.Behaviors>
-        <mct:StatusBarBehavior StatusBarColor="Black"/>
+        <mct:StatusBarBehavior StatusBarColor="#1b4a3b"/>
     </Page.Behaviors>
     <ScrollView>
         <VerticalStackLayout
@@ -32,32 +32,14 @@
                 Text="Crea una Mesa!"
                 SemanticProperties.HeadingLevel="Level1"
                 FontSize="32"
-                HorizontalOptions="Center" />
-            <Picker x:Name="pickerNroMesa"
-                    Title="Numero de Mesa"
-                    HorizontalTextAlignment="Center"
+                HorizontalOptions="Center" 
+                />
+            <Editor x:Name="pickerNroMesa"
+                    Placeholder="Numero Mesa"
+                    Focused="pickerNroMesa_Focused"
+                    Keyboard="Numeric"
                     FontSize="28"
-                    Focused="pickerNroMesa_Focused">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:Int32}">
-                        <x:Int32>1</x:Int32>
-                        <x:Int32>2</x:Int32>
-                        <x:Int32>3</x:Int32>
-                        <x:Int32>4</x:Int32>
-                        <x:Int32>5</x:Int32>
-                        <x:Int32>6</x:Int32>
-                        <x:Int32>7</x:Int32>
-                        <x:Int32>8</x:Int32>
-                        <x:Int32>9</x:Int32>
-                        <x:Int32>10</x:Int32>
-                        <x:Int32>11</x:Int32>
-                        <x:Int32>12</x:Int32>
-                        <x:Int32>13</x:Int32>
-                        <x:Int32>14</x:Int32>
-                        <x:Int32>15</x:Int32>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
+                    HorizontalTextAlignment="Center"/>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -128,7 +110,11 @@
                     HorizontalOptions="Center"
                     BackgroundColor="DarkRed"
                     TextColor="White"
+                Margin="0,0,0,20"
                     />
+            <Label IsVisible="True"
+                   
+                   x:Name="labelTotal"/>
         </VerticalStackLayout>
     </ScrollView>
 

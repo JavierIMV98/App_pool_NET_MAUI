@@ -68,17 +68,19 @@
                 </Grid.ColumnDefinitions>
 
                 <Button Text="Agregar Orden"
-                    Clicked="OnAgrOrden"
-                    HorizontalOptions="Center"
-                    BackgroundColor="#1b4a3b"
-                    TextColor="White"/>
+                        Scale="1.2"
+                        Clicked="OnAgrOrden"
+                        HorizontalOptions="Center"
+                        BackgroundColor="#1b4a3b"
+                        TextColor="White"/>
                 <Button Text="Ver Ordenes"
-                    x:Name="verOrdenBtn"
-                    Clicked="OnVerOrden"
-                    Grid.Column="1"
-                    HorizontalOptions="Center"
-                    BackgroundColor="#1b4a3b"
-                    TextColor="White"/>
+                        x:Name="verOrdenBtn"
+                        Scale="1.2"
+                        Clicked="OnVerOrden"
+                        Grid.Column="1"
+                        HorizontalOptions="Center"
+                        BackgroundColor="#1b4a3b"
+                        TextColor="White"/>
             </Grid>
 
 

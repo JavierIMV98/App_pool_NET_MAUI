@@ -36,6 +36,12 @@
                 Title="Gestion Ordenes"
                 ContentTemplate="{DataTemplate local:OrdensPage}"/>
         </FlyoutItem>
+        <FlyoutItem  Title="Registros"
+                         FlyoutIcon="ordenes.png">
+            <ShellContent
+                    Title="Registros totales"
+                    ContentTemplate="{DataTemplate local:RegistrosPage}"/>
+        </FlyoutItem>
     <Shell.FlyoutFooter>
         <Label Text="Hecho por JavierIMV98" 
                FontSize="15"

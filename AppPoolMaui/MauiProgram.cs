@@ -24,6 +24,7 @@ public static class MauiProgram
             CreateInstance<ProductoRepository>(s, dbPath));
 		builder.Services.AddSingleton<OrdenRepository>(s => ActivatorUtilities.
 			CreateInstance<OrdenRepository>(s, dbPath));
+		builder.Services.AddSingleton<RegistroRepository>(s=>ActivatorUtilities.CreateInstance<RegistroRepository>(s, dbPath));
 
 #if DEBUG
         builder.Logging.AddDebug();
