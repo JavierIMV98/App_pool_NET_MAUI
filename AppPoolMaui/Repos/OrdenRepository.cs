@@ -58,10 +58,14 @@ namespace AppPoolMaui.Repos
             try
             {
                 await Init();
+                var lista = IdByNumero(numero);
 
                 if (string.IsNullOrEmpty(numero))
                     throw new Exception("numero valido requerido");
-                result = await _connection.DeleteAsync(new Orden { NroMesa = numero, });
+                foreach(var item in lista)
+                {
+                    result = await _connection.DeleteAsync(new Orden { Id = item, });
+                }
             }
             catch (Exception)
             {
@@ -69,14 +73,37 @@ namespace AppPoolMaui.Repos
                 StatusMessage = "Fallo en crear mesa";
             }
         }
+        public List<int> IdByNumero(string numero)
+        {
+            InitMainThread();
+            var listaOrdenes =  conn.Table<Orden>().ToList();
+            List<int> mesasMatch= new List<int>();
+            foreach(var orden in listaOrdenes)
+            {
+                if(orden.NroMesa == numero)
+                {
+                    mesasMatch.Add(orden.Id);
+                }
+
+            }
+            return mesasMatch;
+        }
 
         public double valorTotalOrden(string numeroMesa)
         {
             InitMainThread();
-            var asd = conn.Get<Orden>(numeroMesa);
-            double cantidad = asd.Cantidad;
-            double precioProducto = double.Parse(asd.PrecioProducto);
-            return (cantidad * precioProducto);
+            double totalidad = 0;
+            var idbynumero = IdByNumero(numeroMesa);
+            List<Orden> listaOrdenes = new List<Orden>();
+            foreach(var ordenid in idbynumero)
+            {
+                listaOrdenes.Add(conn.Get<Orden>(ordenid));
+            }
+            foreach(var item in listaOrdenes)
+            {
+                totalidad = totalidad + (item.Cantidad * double.Parse(item.PrecioProducto));
+            }
+            return (totalidad);
 
             
         }

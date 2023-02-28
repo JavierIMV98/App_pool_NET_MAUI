@@ -11,7 +11,9 @@ namespace AppPoolMaui.Models
     {
         //TODO: Evaluar como poder o crear mas de una orden por mesa (quizas cambiando PK a algo que sea común para los mismos numeros...
         //Quizas se pueda hacer algo con al conn.Get(PrimaryKey) de las repos.
-        [PrimaryKey]
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+        [MaxLength(3)]
         public string NroMesa { get; set; }
 
         [Indexed]

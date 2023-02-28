@@ -103,7 +103,7 @@ namespace AppPoolMaui
             double horas = double.Parse(listatiempo[0]);
             double minutos = double.Parse(listatiempo[1]);
             //switch segun socio o no socio que se deberia agregar en la base de datos creo xd
-            double precioporminuto = 100;
+            double precioporminuto = 75;
             return (((horas*60)+minutos + 1)*precioporminuto);
 
 

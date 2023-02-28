@@ -56,10 +56,10 @@ public partial class MainPage : ContentPage
         {
             await App.OrdenRepo.DeletOrden(result);
         }
-        catch (Exception)
+        catch (Exception asd)
         {
 
-            totalorden=0;
+           await DisplayAlert("Error", asd.Message, "cancel");
         }
 		
         
