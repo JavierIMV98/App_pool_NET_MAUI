@@ -57,7 +57,29 @@ namespace AppPoolMaui
                 StatusMessage = "Fallo en crear mesa";
             }
         }
+        public async Task AddNewMesaCustom(string numero, string hora)
+        {
+            int result = 0;
+            try
+            {
+                await Init();
 
+                if (string.IsNullOrEmpty(numero))
+                    throw new Exception("numero valido requerido");
+                result = await _connection.InsertAsync(new Mesa
+                {
+                    Numero = numero,
+                    HoraInicio = Convert.ToDateTime(hora),
+                    
+                });
+                StatusMessage = $"Mesa {numero} se ha creado";
+            }
+            catch (Exception)
+            {
+
+                StatusMessage = "Fallo en crear mesa";
+            }
+        }
         public async Task DeleteMesa(string numero)
         {
             int result = 0;
@@ -92,7 +114,6 @@ namespace AppPoolMaui
 
         public double valorTotalTiempo(string numeroMesa)
         {
-            //Pendiente esto
             InitMainThread();
             var asd = conn.Get<Mesa>(numeroMesa);
             var horainicial = asd.HoraInicio;
@@ -102,11 +123,11 @@ namespace AppPoolMaui
             var listatiempo = str.Split(":");
             double horas = double.Parse(listatiempo[0]);
             double minutos = double.Parse(listatiempo[1]);
-            //switch segun socio o no socio que se deberia agregar en la base de datos creo xd
             double precioporminuto = 75;
-            return (((horas*60)+minutos + 1)*precioporminuto);
-
-
+            double valortotaltiempo;
+            double minutostotales = (horas * 60) + minutos + 1;
+            valortotaltiempo = minutostotales * precioporminuto;
+            return valortotaltiempo;
         }
 
         //Metodo en el main thread para ver como agregar la lista de mesas en el picker de ordenes

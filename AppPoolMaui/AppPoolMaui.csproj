@@ -12,10 +12,10 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>AppPoolMaui</ApplicationTitle>
+		<ApplicationTitle>Pool España</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.apppoolmaui</ApplicationId>
+		<ApplicationId>com.companyname.poolespana</ApplicationId>
 		<ApplicationIdGuid>103cac4c-0566-4f04-a8d2-3cc2853a2824</ApplicationIdGuid>
 
 		<!-- Versions -->
