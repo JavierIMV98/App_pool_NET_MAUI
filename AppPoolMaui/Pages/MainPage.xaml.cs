@@ -46,7 +46,7 @@ public partial class MainPage : ContentPage
         {
         preciotiempo = App.MesaRepo.valorTotalTiempo(result);
         await App.RegistroRepo.AddNewRegistro(result, totalorden + preciotiempo, DateTime.Now);
-        await App.MesaRepo.DeleteMesa(result);
+
         }
         catch
         {
@@ -79,15 +79,15 @@ public partial class MainPage : ContentPage
             "Ok");
 
             }
-
+            await App.MesaRepo.DeleteMesa(result);
             await ListarMesas();
         }
         else
         {
             label1.Text = "Not eliminated";
         }
-
         
+
     }
 
 	private async Task<int> ListarMesas()
