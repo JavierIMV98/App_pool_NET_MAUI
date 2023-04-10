@@ -14,15 +14,6 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
         List<Mesa> mesas = App.MesaRepo.SeleccionarMesas();
     }
-	
-	private async void OnCrearClicked(object sender, EventArgs e)
-	{
-		await App.MesaRepo.AddNewMesa(pickerNroMesa.Text);
-		label1.Text = App.MesaRepo.StatusMessage;
-        await ListarMesas();
-
-
-    }
 	private async void OnVerClicked(object sender, EventArgs e)
 	{
         await ListarMesas();
@@ -75,16 +66,16 @@ public partial class MainPage : ContentPage
 		
         
         if (preciotiempo != 0){
-            if ((preciotiempo / 75 < 58))
+            if ((preciotiempo / App.MesaRepo.valoresTotalesMesa(result).pminuto < 58))
             {
                 await DisplayAlert("TOTAL CONSUMOS",
-                $"La mesa {result} tiene: \n * En productos: {totalorden}$ \n * Tiempo de mesa: {preciotiempo / 75} minutos usados",
+                $"La mesa {result} tiene: \n * En productos: {totalorden}$ \n * Tiempo de mesa: {preciotiempo / App.MesaRepo.valoresTotalesMesa(result).pminuto} minutos usados",
                 "Ok");
             }
             else
             {
                 await DisplayAlert("TOTAL GASTOS",
-            $"Los gastos de la mesa {result} fueron: \n * En productos: {totalorden}$ \n * En tiempo: {preciotiempo}$ \nTotal = {totalorden + preciotiempo}$",
+            $"Los gastos de la mesa {result} fueron: \n * En productos: {totalorden}$ \n * En tiempo: {preciotiempo}$ (Tiempo: {preciotiempo / App.MesaRepo.valoresTotalesMesa(result).pminuto} minutos) \nTotal = {totalorden + preciotiempo}$",
             "Ok");
 
             }
@@ -116,7 +107,6 @@ public partial class MainPage : ContentPage
 
     private void pickerNroMesa_Focused(object sender, FocusEventArgs e)
     {
-        CrearBtn.IsEnabled= true;
         CrearCustomBtn.IsEnabled= true;
     }
 
@@ -141,22 +131,28 @@ public partial class MainPage : ContentPage
             totalorden = 0;
 
         }
-
-        double preciotiempo = App.MesaRepo.valorTotalTiempo(result);
-
-        if ((preciotiempo / 75 < 58))
+        try
         {
-            await DisplayAlert("TOTAL CONSUMOS",
-            $"La mesa {result} tiene: \n * En productos: {totalorden}$ \n * Tiempo de mesa: {preciotiempo / 75} minutos usados",
+            double preciotiempo = App.MesaRepo.valorTotalTiempo(result);
+            if ((preciotiempo / App.MesaRepo.valoresTotalesMesa(result).pminuto < 58))
+            {
+                await DisplayAlert("TOTAL CONSUMOS",
+                $"La mesa {result} tiene: \n * En productos: {totalorden}$ \n * Tiempo de mesa: {preciotiempo / App.MesaRepo.valoresTotalesMesa(result).pminuto} minutos usados",
+                "Ok");
+            }
+            else
+            {
+                await DisplayAlert("TOTAL GASTOS",
+            $"Los gastos de la mesa {result} fueron: \n * En productos: {totalorden}$ \n * En tiempo: {preciotiempo}$ (Tiempo: {preciotiempo / App.MesaRepo.valoresTotalesMesa(result).pminuto} minutos)\nTotal = {totalorden + preciotiempo}$",
             "Ok");
-        }
-        else
-        {
-            await DisplayAlert("TOTAL GASTOS",
-        $"Los gastos de la mesa {result} fueron: \n * En productos: {totalorden}$ \n * En tiempo: {preciotiempo}$ (Tiempo: {preciotiempo/75})\nTotal = {totalorden + preciotiempo}$",
-        "Ok");
 
+            }
         }
+        catch (Exception)
+        { label1.Text = "No evaluado"; }
+       
+
+
 
         await ListarMesas();
 
@@ -165,7 +161,31 @@ public partial class MainPage : ContentPage
     {
         string result = await DisplayPromptAsync("Hora", $"Hora Formato:\n DD/MM/AAAA HH:mm:ss AM (o PM)"
             , initialValue:$"{DateTime.Now}");
-        await App.MesaRepo.AddNewMesaCustom(pickerNroMesa.Text, result);
+        double precio = 75;
+        switch (pickerprecio.SelectedIndex)
+        {
+            case (-1): precio = 75;
+                break;
+            case (0):
+                precio = 75;
+                break;
+            case (1):
+                precio = 80;
+                break;
+            case (2):
+                precio = 85;
+                break;
+            case (3):
+                precio = 90;
+                break;
+            case (4):
+                precio = 92;
+                break;
+            case (5):
+                precio = 113;
+                break;
+        }
+        await App.MesaRepo.AddNewMesaCustom(pickerNroMesa.Text, result, precio);
         label1.Text = App.MesaRepo.StatusMessage;
         await ListarMesas();
     }

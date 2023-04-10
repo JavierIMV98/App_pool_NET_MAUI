@@ -37,27 +37,7 @@ namespace AppPoolMaui
         {
             _dbPath= dbPath;
         }
-
-        public async Task AddNewMesa(string numero)
-        {
-            int result = 0;
-            try
-            {
-                await Init();
-
-                if (string.IsNullOrEmpty(numero))
-                    throw new Exception("numero valido requerido");
-                result = await _connection.InsertAsync(new Mesa {Numero = numero, HoraInicio = 
-                    DateTime.Now});
-                StatusMessage = $"Mesa {numero} se ha creado";
-            }
-            catch (Exception)
-            {
-
-                StatusMessage = "Fallo en crear mesa";
-            }
-        }
-        public async Task AddNewMesaCustom(string numero, string hora)
+        public async Task AddNewMesaCustom(string numero, string hora, double precio)
         {
             int result = 0;
             try
@@ -70,8 +50,9 @@ namespace AppPoolMaui
                 {
                     Numero = numero,
                     HoraInicio = Convert.ToDateTime(hora),
-                    
-                });
+                    pminuto = precio,
+
+                }) ;
                 StatusMessage = $"Mesa {numero} se ha creado";
             }
             catch (Exception)
@@ -123,15 +104,22 @@ namespace AppPoolMaui
             var listatiempo = str.Split(":");
             double horas = double.Parse(listatiempo[0]);
             double minutos = double.Parse(listatiempo[1]);
-            double precioporminuto = 75;
+            double precioporminuto = asd.pminuto;       
             double valortotaltiempo;
             double minutostotales = (horas * 60) + minutos + 1;
             valortotaltiempo = minutostotales * precioporminuto;
             return valortotaltiempo;
         }
+        public Mesa valoresTotalesMesa(string numeroMesa)
+        {
+            InitMainThread();
+            var asd = conn.Get<Mesa>(numeroMesa);
+            return asd;
+        }
 
-        //Metodo en el main thread para ver como agregar la lista de mesas en el picker de ordenes
-        public List<Mesa> SeleccionarMesas()
+
+            //Metodo en el main thread para ver como agregar la lista de mesas en el picker de ordenes
+            public List<Mesa> SeleccionarMesas()
         {
             try
             {
