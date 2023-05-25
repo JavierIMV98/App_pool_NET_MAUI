@@ -81,5 +81,34 @@ namespace AppPoolMaui.Repos
             }
             return new List<Registro>();
         }
+        public async Task DeleteRegistros()
+        {
+            int result = 0;
+            try
+            {
+                await Init();
+                result = await _connection.DeleteAllAsync<Registro>();
+            }
+            catch (Exception)
+            {
+
+                StatusMessage = "Fallo en crear mesa";
+            }
+        }
+        public async Task DeleteRegistro(double id)
+        {
+            int result = 0;
+            try
+            {
+                await Init();
+                //result = await _connection.DeleteAsync<Registro>(id);
+                result = await _connection.DeleteAsync<Registro>(id);
+            }
+            catch (Exception)
+            {
+
+                StatusMessage = "Fallo en crear mesa";
+            }
+        }
     }
 }

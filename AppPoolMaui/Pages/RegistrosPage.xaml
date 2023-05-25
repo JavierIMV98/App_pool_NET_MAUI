@@ -6,44 +6,65 @@
     <RefreshView x:Name="refreshingView" 
                  Refreshing="RefreshView_Refreshing">
         <ScrollView>
-            
-            <CollectionView x:Name="listaRegistros" Grid.Row="20">
+
+            <CollectionView x:Name="listaRegistros" Grid.Row="20"
+                            VerticalScrollBarVisibility="Default"
+                            ItemsSource="{Binding DatosCollection}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        
-                        <Frame BorderColor="DarkGray"
-                               CornerRadius="10"
-                               Padding="8"
-                               HorizontalOptions="FillAndExpand"
-                               Margin="5, 10,5,1"
-                               HasShadow="True">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*" />
-
-                                    <ColumnDefinition Width="3*" />
-                                    <ColumnDefinition Width="1*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Text="{Binding NumeroMesa}"
-                                       TextColor="Black"
-                                       Grid.Column="0"
-                                       FontSize="22"
-                                       HorizontalTextAlignment="Center"
-                                       VerticalTextAlignment="Center"/>
-                                <Label Text="{Binding FechaFinalizada}"
-                                       TextColor="Black"
-                                       Grid.Column="1"
-                                       FontSize="22"
-                                       HorizontalTextAlignment="Center"
-                                       VerticalTextAlignment="Center"/>
-                                <Label Text="{Binding Total}"
-                                       TextColor="Black"
-                                       Grid.Column="2"
-                                       FontSize="22"
-                                       HorizontalTextAlignment="Center"
-                                       VerticalTextAlignment="Center"/>
-                            </Grid>
-                        </Frame>
+                        <SwipeView>
+                            <SwipeView.LeftItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="X Delete"
+                                   IconImageSource="delete.png"
+                                   BackgroundColor="Red"
+                                   Clicked="DeleteRegistro"
+                                   />
+                                </SwipeItems>
+                            </SwipeView.LeftItems>
+                            <Frame BorderColor="DarkGray"
+                                   CornerRadius="10"
+                                   Padding="8"
+                                   HorizontalOptions="FillAndExpand"
+                                   Margin="5, 10,5,1"
+                                   HasShadow="True">
+                                        
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="1*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding Id}"
+                                           x:Name="plsworkxd"
+                                           TextColor="Black"
+                                           Grid.Column="0"
+                                           FontSize="22"
+                                           HorizontalTextAlignment="Center"
+                                           VerticalTextAlignment="Center"/>
+                                    <Label Text="{Binding NumeroMesa}"
+                                           TextColor="Black"
+                                           Grid.Column="1"
+                                           FontSize="22"
+                                           HorizontalTextAlignment="Center"
+                                           VerticalTextAlignment="Center"/>
+                                    <Label Text="{Binding FechaFinalizada}"
+                                           TextColor="Black"
+                                           Grid.Column="2"
+                                           FontSize="22"
+                                           HorizontalTextAlignment="Center"
+                                           VerticalTextAlignment="Center"/>
+                                    <Label Text="{Binding Total}"
+                                           TextColor="Black"
+                                           Grid.Column="3"
+                                           FontSize="22"
+                                           HorizontalTextAlignment="Center"
+                                           VerticalTextAlignment="Center"
+                                           />
+                                </Grid>
+                            </Frame>
+                        </SwipeView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
