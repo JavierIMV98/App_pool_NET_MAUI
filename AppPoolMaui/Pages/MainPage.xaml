@@ -54,7 +54,11 @@
                             <x:Double>85</x:Double>
                             <x:Double>90</x:Double>
                             <x:Double>92</x:Double>
+                            <x:Double>100</x:Double>
+                            <x:Double>110</x:Double>
                             <x:Double>113</x:Double>
+                            <x:Double>124</x:Double>
+                            <x:Double>135</x:Double>
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>

@@ -182,7 +182,19 @@ public partial class MainPage : ContentPage
                 precio = 92;
                 break;
             case (5):
+                precio = 100;
+                break;
+            case (6):
+                precio = 110;
+                break;
+            case (7):
                 precio = 113;
+                break;
+            case (8):
+                precio = 124;
+                break;
+            case (9):
+                precio = 135;
                 break;
         }
         await App.MesaRepo.AddNewMesaCustom(pickerNroMesa.Text, result, precio);
